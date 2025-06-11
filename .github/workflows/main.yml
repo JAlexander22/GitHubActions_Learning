@@ -7,5 +7,10 @@ on:
 
 jobs:
   build:
-    runes-on: ubuntu
-# test
+    runs-on: PHANTOM
+
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+      
