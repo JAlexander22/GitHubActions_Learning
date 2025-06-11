@@ -8,3 +8,4 @@ on:
 jobs:
   build:
     runes-on: ubuntu
+# test
