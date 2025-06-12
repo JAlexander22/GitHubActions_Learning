@@ -1,41 +1,60 @@
-name: World Workflow
+name: File Change
 
 on:
   workflow_dispatch:
+    inputs:
+      action:
+        description: 'Choose the action to perform: create or delete the file'
+        required: true
+        default: 'create'
+        options:
+          - 'create'
+          - 'delete'
+      file_name:
+        description: 'Name of the file to create or delete'
+        required: true
+        default: 'Example.txt'
     
 
 jobs:
-  hello_world:
+  File_Add:
     runs-on: self-hosted
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       
-      - name: Create file with PowerShell
+      - name: Create or Delete File
         run: |
+          $action = "${{ github.event.inputs.action }}"  # 'create' or 'delete' from input
           $filePath = "D:\DevOpsSoftware\GitHubActions\GitHubActions_Learning"
+          $fileName = "${{ github.event.inputs.file_name }}"  # File name from input
+          $fileFullPath = "$filePath\$fileName"
+        
+          $action = "${{ github.event.inputs.action }}"  # 'create' or 'delete' from input
+          $filePath = "D:\DevOpsSoftware\GitHubActions\GitHubActions_Learning"
+          $fileName = "${{ github.event.inputs.file_name }}"  # File name from input
+          $fileFullPath = "$filePath\$fileName"
 
-         
-          if (-not (Test-Path -Path $filePath)) {
-              New-Item -Path $filePath -ItemType Directory
+          if ($action -eq "create") {
+              # Check if the directory exists, if not, create it
+              if (-not (Test-Path -Path $filePath)) {
+                  New-Item -Path $filePath -ItemType Directory
+              }
+
+              # Create the file and set content
+              New-Item -Path "$filePath" -Name $fileName -ItemType File -Force
+              Set-Content -Path $fileFullPath -Value "This is a Test"
+              Write-Host "File created: $fileFullPath"
+          } elseif ($action -eq "delete") {
+              # Delete the file if it exists
+              if (Test-Path -Path $fileFullPath) {
+                  Remove-Item -Path $fileFullPath -Force
+                  Write-Host "File deleted: $fileFullPath"
+              } else {
+                  Write-Host "File not found: $fileFullPath"
+              }
+          } else {
+              Write-Host "Invalid action. Please choose 'create' or 'delete'."
           }
-
-         
-          New-Item -Path "$filePath" -Name "Example.txt" -ItemType File -Force
-          Set-Content -Path "$filePath\Example.txt" -Value "This is a Test"
-          Get-Content -Path "$filePath\Example.txt"
-        shell: pwsh  
-
-
-      # - name: Delete file with PowerShell
-      #   run: |
-      #     $filePath = "D:\DevOpsSoftware\GitHubActions\GitHubActions_Learning\file.txt"  
-      #         Remove-Item $filePath -Force
-      #         Write-Host "File deleted successfully: $filePath"
-      #     } else {
-      #         Write-Host "File not found: $filePath"
-      #     }
-      #   shell: pwsh  
-
-      
+        shell: pwsh  # Use PowerShell Core
