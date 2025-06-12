@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Add directory as safe directory
         run: |
-         git config --system --add safe.directory "D:/DevOpsSoftware/GitHubActions/actions-runner/_work/GitHubActions_Learning/GitHubActions_Learning"
+         git config --local --add safe.directory "D:/DevOpsSoftware/GitHubActions/actions-runner/_work/GitHubActions_Learning/GitHubActions_Learning"
 
 
 
