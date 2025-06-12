@@ -94,3 +94,12 @@ If i wanted to add or modifiy this directory i would need to add
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
 To authenticate.
+
+
+
+### Changing Directory 
+Example Repo, File Modify
+Creating a file in on location,
+Changing the destination then re runing the pipeline can cause an error 
+ _Error: fatal: detected dubious ownership in repository at 'GitHubLocationOnPrem'_
+ This error appears due to Secuirty risk.
