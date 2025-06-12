@@ -27,12 +27,12 @@ jobs:
       - name: Create or Delete File
         run: |
           $action = "${{ github.event.inputs.action }}"  # 'create' or 'delete' from input
-          $filePath = "D:\DevOpsSoftware\GitHubActions\Files"
+          $filePath = "D:\DevOpsSoftware\Files"
           $fileName = "${{ github.event.inputs.file_name }}"  # File name from input
           $fileFullPath = "$filePath\$fileName"
         
           $action = "${{ github.event.inputs.action }}"  # 'create' or 'delete' from input
-          $filePath = "D:\DevOpsSoftware\GitHubActions\Files"
+          $filePath = "D:\DevOpsSoftware\Files"
           $fileName = "${{ github.event.inputs.file_name }}"  # File name from input
           $fileFullPath = "$filePath\$fileName"
 
@@ -58,3 +58,6 @@ jobs:
               Write-Host "Invalid action. Please choose 'create' or 'delete'."
           }
         shell: pwsh  # Use PowerShell Core
+
+     
+        
