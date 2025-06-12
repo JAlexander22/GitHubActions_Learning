@@ -31,12 +31,12 @@ jobs:
       - name: Create or Delete File
         run: |
           $action = "${{ github.event.inputs.action }}"  # 'create' or 'delete' from input
-          $filePath = "D:\DevOpsSoftware\GitHubActions\GitHubActions_Learning\Files"
+          $filePath = "D:\DevOpsSoftware\GitHubActions\Files"
           $fileName = "${{ github.event.inputs.file_name }}"  # File name from input
           $fileFullPath = "$filePath\$fileName"
         
           $action = "${{ github.event.inputs.action }}"  # 'create' or 'delete' from input
-          $filePath = "D:\DevOpsSoftware\GitHubActions\GitHubActions_Learning\Files"
+          $filePath = "D:\DevOpsSoftware\GitHubActions\Files"
           $fileName = "${{ github.event.inputs.file_name }}"  # File name from input
           $fileFullPath = "$filePath\$fileName"
 
