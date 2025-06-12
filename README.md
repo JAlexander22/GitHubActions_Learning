@@ -30,3 +30,12 @@ Jobs: / Build: / runs-on: [self-hosted, DEV]
 jobs:
   build:
     runs-on: [self-hosted, PHANTOM]  
+
+
+## On Push
+Once a commit is made, it will auto trigger the pipeline
+on:
+  push:
+    branches:
+      - main
+
