@@ -14,7 +14,14 @@ jobs:
       
       - name: Create file with PowerShell
         run: |
-          $filePath = "D:\DevOpsSoftware\GitHubActions\GitHubActions_Learning
+          $filePath = "D:\DevOpsSoftware\GitHubActions\GitHubActions_Learning"
+
+         
+          if (-not (Test-Path -Path $filePath)) {
+              New-Item -Path $filePath -ItemType Directory
+          }
+
+         
           New-Item -Path "$filePath" -Name "Example.txt" -ItemType File -Force
           Set-Content -Path "$filePath\Example.txt" -Value "This is a Test"
           Get-Content -Path "$filePath\Example.txt"
