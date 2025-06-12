@@ -7,7 +7,7 @@ on:
 
 jobs:
   hello_world:
-    runs-on: PHANTOM
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code

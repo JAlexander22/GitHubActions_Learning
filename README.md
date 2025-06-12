@@ -19,3 +19,14 @@ Action runner is the Agent used and installed on your machine. (_ensure all depe
 
 ### Run as Service
 - This will allow the Agent to run as a Service on your system.
+
+
+## Self-Hosted
+Add in Jobs: / Build: / runs-on: self-hosted. This tell GitHub to use self-hosted runner 
+
+If you have muiltiple self-hosted runners you can define by tag
+Jobs: / Build: / runs-on: [self-hosted, DEV]
+### Example:
+jobs:
+  build:
+    runs-on: [self-hosted, PHANTOM]  
