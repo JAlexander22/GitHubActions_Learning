@@ -50,6 +50,8 @@ jobs:
               New-Item -Path "$filePath" -Name $fileName -ItemType File -Force
               Set-Content -Path $fileFullPath -Value "This is a Test"
               Write-Host "File created: $fileFullPath"
+              Get-Content -Path $fileFullPath
+
           } elseif ($action -eq "delete") {
               # Delete the file if it exists
               if (Test-Path -Path $fileFullPath) {
