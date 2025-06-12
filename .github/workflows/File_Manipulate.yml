@@ -23,6 +23,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Add directory as safe directory
+        run: |
+          git config --global --add safe.directory D:/DevOpsSoftware/GitHubActions/actions-runner/_work/GitHubActions_Learning/GitHubActions_Learning
+
       
       - name: Create or Delete File
         run: |
